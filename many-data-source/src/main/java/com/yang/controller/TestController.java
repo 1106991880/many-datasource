@@ -1,6 +1,7 @@
 package com.yang.controller;
 
 import com.yang.entity.Emp;
+import com.yang.service.TestService;
 import com.yang.test1.dao.EmpMapper1;
 import com.yang.test2.dao.EmpMapper2;
 import io.swagger.annotations.Api;
@@ -24,6 +25,15 @@ public class TestController {
     private EmpMapper1 empMapper1;
     @Autowired
     private EmpMapper2 empMapper2;
+
+    @Autowired
+    private TestService testService;
+
+    @GetMapping("/testAop")
+    public String testAop() {
+        String testAop = testService.testAop();
+        return testAop;
+    }
 
     @ApiOperation("测试mybatis@select注解，通过test1数据库实现")
     @GetMapping("/getKing1")
@@ -71,5 +81,6 @@ public class TestController {
         List<Emp> emps = empMapper2.selectList(null);
         return emps;
     }
+
 
 }
