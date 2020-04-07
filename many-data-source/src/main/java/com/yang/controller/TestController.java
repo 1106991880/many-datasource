@@ -1,5 +1,6 @@
 package com.yang.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yang.entity.Emp;
 import com.yang.service.TestService;
 import com.yang.test1.dao.EmpMapper1;
@@ -29,10 +30,19 @@ public class TestController {
     @Autowired
     private TestService testService;
 
+    //测试AOP编程
     @GetMapping("/testAop")
     public String testAop() {
         String testAop = testService.testAop();
         return testAop;
+    }
+
+    @GetMapping("/getOneData")
+    public List<Emp> getOneData(Integer id) {
+        System.out.println("swagger接口测试参数" + id);
+        List<Emp> empList = empMapper1.selectList(new QueryWrapper<Emp>().eq("id", id));
+        System.out.println("查询结果" + empList);
+        return empList;
     }
 
     @ApiOperation("测试mybatis@select注解，通过test1数据库实现")

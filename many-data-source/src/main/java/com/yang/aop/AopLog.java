@@ -1,8 +1,12 @@
 package com.yang.aop;
 
+import com.yang.annotation.ExtTransaction;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Method;
 
 /**
  * @Author: yang
@@ -57,12 +61,48 @@ public class AopLog {
     }
 
     //环绕通知
+//    @Around("execution(* com.yang.service.*.*(..))")
+//    public void around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+//        System.out.println("环绕通知，前======");
+//        proceedingJoinPoint.proceed();//代理调用方法 如果代码跑出异常 后面的代码就不会执行了
+//        System.out.println("环绕通知，后======");
+//
+//    }
+
+
+    //自定义注解的具体实现 测试具体实现
     @Around("execution(* com.yang.service.*.*(..))")
-    public void around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        System.out.println("环绕通知，前======");
-        proceedingJoinPoint.proceed();//代理调用方法 如果代码跑出异常 后面的代码就不会执行了
-        System.out.println("环绕通知，后======");
+    public void around(ProceedingJoinPoint pjp) throws Throwable {
+        //获取代理对象的具体方法
+
+        //获取方法名称
+        String name = pjp.getSignature().getName();
+        //获取目标对象
+        Class<?> aClass = pjp.getTarget().getClass();
+        //获取目标对象类型
+        Class[] parameterTypes = ((MethodSignature) pjp.getSignature()).getParameterTypes();
+        //获取目标对象方法
+        Method objMethod = aClass.getMethod(name, parameterTypes);
+
+        //获取注解
+        //获取方法上面是否加注解
+        //如果存在事物注解 就添加事物
+        ExtTransaction declaredAnnotation = objMethod.getDeclaredAnnotation(ExtTransaction.class);
+        if (declaredAnnotation == null) {
+            System.out.println("没有加注解1");
+        } else {
+            //执行你的操作
+            System.out.println("加了注解1");
+        }
+        pjp.proceed();
+        //调用目标代理对象的方法
+        if (declaredAnnotation != null) {
+            System.out.println("提交事物2");
+        } else {
+            System.out.println("没有加注解2");
+        }
 
     }
+
 
 }
