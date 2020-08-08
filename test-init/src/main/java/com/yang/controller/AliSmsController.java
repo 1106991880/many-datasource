@@ -40,7 +40,7 @@ public class AliSmsController {
         log.info("短信验证码===" + json);
         // ID和key都是从阿里云上面申请的
         // 地址 https://dysms.console.aliyun.com/dysms.htm?spm=a2c8b.12215442.nav-right.2.59e3336aj9yjA4#/domestic/text/sign
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4G8x2n7L2Rkf9weTqrWu", "OUPD3eiDb5Ra378G1A5IRLQ65zwErg");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "******", "******");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setSysMethod(MethodType.POST);
