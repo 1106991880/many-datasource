@@ -24,7 +24,7 @@ import java.util.Map;
 /**
  * @Author: yang
  * @Date: 2020-08-02 22:32
- * @Description: 阿里云短信服务
+ * @Description: 阿里云短信服务 发送短信验证码
  */
 @Controller
 @RequestMapping("/sms")
@@ -40,7 +40,7 @@ public class AliSmsController {
         log.info("短信验证码===" + json);
         // ID和key都是从阿里云上面申请的
         // 地址 https://dysms.console.aliyun.com/dysms.htm?spm=a2c8b.12215442.nav-right.2.59e3336aj9yjA4#/domestic/text/sign
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "******", "******");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4G8x2n7L2Rkf9weTqrWu", "OUPD3eiDb5Ra378G1A5IRLQ65zwErg");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setSysMethod(MethodType.POST);
@@ -62,7 +62,16 @@ public class AliSmsController {
             CommonResponse response = client.getCommonResponse(request);
             // 是否响应成功
             System.out.println("响应是否成功" + response.getData());
-            return JsonStringUtils.JsonData(true, "发送短信成功", response.getData());
+
+            String data = response.getData();
+            JSONObject jsonObject = JSONObject.parseObject(data);
+            String code = jsonObject.getString("Code");
+            String message = jsonObject.getString("Message");
+            if ("OK".equals(code)) {
+                return JsonStringUtils.JsonData(true, "发送短信成功", message);
+            } else {
+                return JsonStringUtils.JsonData(false, "发送短信失败", message);
+            }
         } catch (ServerException e) {
             e.printStackTrace();
         } catch (ClientException e) {
