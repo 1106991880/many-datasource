@@ -11,12 +11,13 @@ spring:
     username: root
     password: 123456
     #driver-class-name: com.mysql.jdbc.Driver
-    #用这个驱动打印完整的sql日志
+    #用这个驱动打印完整的sql日志 会替换掉对于的问号 直接打印完整的sql 方便直接粘贴到数据库中进行调试
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
   #redis配置 单机
   redis:
     database: 0
-    host: 172.16.52.133
+    #host: 172.16.52.133
+    host: localhost
     port: 6379
     #password: 123456
     jedis:
