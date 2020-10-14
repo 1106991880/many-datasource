@@ -11,6 +11,11 @@ public class Test01 {
 
         String str = "hello world";
 
+        char[] chars = str.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            System.out.println(chars[i]);
+        }
+
         int len = len(str);
         System.out.println(len);
     }

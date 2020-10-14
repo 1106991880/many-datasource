@@ -17,6 +17,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 @Configuration
 public class RedisConfig {
+
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<String, Object>();
@@ -26,7 +27,6 @@ public class RedisConfig {
         //objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         //objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         //fastJson2JsonRedisSerializer.setObjectMapper(objectMapper);
-
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
         // 开启事物
         redisTemplate.setEnableTransactionSupport(true);

@@ -38,6 +38,7 @@ public class RedisController {
         redisUserInfo.setName("yang");
         //设置时间为60秒
         redisTemplateUtils.setRedisObject("userInfo", redisUserInfo, 60L);
+        redisTemplateUtils.setRedisObject("yangceshi","哈哈哈哈",100L);
 
         return "success";
     }
@@ -120,7 +121,6 @@ public class RedisController {
         return json;
     }
 
-
     // 获取redis 里面的list数据
     @RequestMapping(value = "/getRedisList")
     @ResponseBody
@@ -131,6 +131,4 @@ public class RedisController {
         List<String> redisListData = (List<String>) listData;
         return redisListData.toString();
     }
-
-
 }

@@ -23,6 +23,7 @@ import org.springframework.jms.annotation.EnableJms;
  * 7.集成easyexcel操作excel文件
  * 8.集成阿里云短信服务sms
  * 9.发现一个很好用的热部署插件jrebel
+ * 10.集成QQ登录
  */
 
 @SpringBootApplication
