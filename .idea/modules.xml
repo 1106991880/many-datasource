@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/eladmin/eladmin-logging/eladmin-logging.iml" filepath="$PROJECT_DIR$/eladmin/eladmin-logging/eladmin-logging.iml" />
       <module fileurl="file://$PROJECT_DIR$/eladmin/eladmin-system/eladmin-system.iml" filepath="$PROJECT_DIR$/eladmin/eladmin-system/eladmin-system.iml" />
       <module fileurl="file://$PROJECT_DIR$/eladmin/eladmin-tools/eladmin-tools.iml" filepath="$PROJECT_DIR$/eladmin/eladmin-tools/eladmin-tools.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/eureka-service/eureka-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/ext-list/ext-list.iml" filepath="$PROJECT_DIR$/ext-list/ext-list.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/java-learn.iml" filepath="$PROJECT_DIR$/.idea/java-learn.iml" />
       <module fileurl="file://$PROJECT_DIR$/learn/learn.iml" filepath="$PROJECT_DIR$/learn/learn.iml" />

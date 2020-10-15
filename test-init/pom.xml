@@ -139,6 +139,21 @@
             <version>2.2.6</version>
         </dependency>
 
+        <!-- 以下是 qq wx 联合登陆需要的相关依赖工具 commons-io， commons-lang3，httpclient -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
         <!-- 阿里云短信服务 -->
         <dependency>
             <groupId>com.aliyun</groupId>

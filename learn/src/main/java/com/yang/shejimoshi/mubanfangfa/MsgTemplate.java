@@ -9,7 +9,6 @@ package com.yang.shejimoshi.mubanfangfa;
 public abstract class MsgTemplate {
 
     public  void  sendMsg(){
-
         //开始日志
         addHeadLog();
         //调用不同的运营商发送
@@ -20,7 +19,6 @@ public abstract class MsgTemplate {
 
     private void addFootLog() {
         System.out.println("调用运营商结束");
-
     }
 
     public abstract void httpRequest();

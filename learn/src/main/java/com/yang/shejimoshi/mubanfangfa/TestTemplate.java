@@ -10,6 +10,5 @@ public class TestTemplate {
         System.out.println("测试代码");
         MsgTemplate yiDong = new YiDong();
         yiDong.sendMsg();
-
     }
 }
