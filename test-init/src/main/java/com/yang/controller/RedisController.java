@@ -31,14 +31,14 @@ public class RedisController {
     @ResponseBody
     @RequestMapping("/addUserInfo")
     public String addUserInfo() {
-
+        System.out.println("redis jrebel是否编译");
         RedisUserInfo redisUserInfo = new RedisUserInfo();
         redisUserInfo.setId(UUID.randomUUID().toString().replaceAll("-", ""));
         redisUserInfo.setAge(20);
         redisUserInfo.setName("yang");
         //设置时间为60秒
-        redisTemplateUtils.setRedisObject("userInfo", redisUserInfo, 60L);
-        redisTemplateUtils.setRedisObject("yangceshi","哈哈哈哈",100L);
+        redisTemplateUtils.setRedisObject("userInfo", redisUserInfo, 360000L);
+        redisTemplateUtils.setRedisObject("yangceshi", "哈哈哈哈", 100L);
 
         return "success";
     }
@@ -83,6 +83,12 @@ public class RedisController {
     @RequestMapping(value = "/redisHash")
     @ResponseBody
     public String redisHash(@RequestBody String json) {
+        System.out.println("测试jrebel是否编译");
+        System.out.println("测试jrebel是否编译");
+        System.out.println("测试jrebel是否编译");
+        System.out.println("测试jrebel是否编译");
+        System.out.println("测试jrebel是否编译");
+        System.out.println("测试jrebel是否编译");
         System.out.println("获取的json字符串参数：" + json);
         redisTemplateUtils.setRedisHash("hashData", "key1", "value1", 60 * 10L);
         redisTemplateUtils.setRedisHash("hashData", "key2", "value2", 60 * 10L);

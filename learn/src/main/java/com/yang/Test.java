@@ -1,12 +1,42 @@
 package com.yang;
 
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
 /**
  * @Author: yang
  * @Date: 2020-03-03 21:52
  * @Description:
  */
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
+
+
+        String s1 = UUID.randomUUID().toString();
+        System.out.println(s1);
+        System.out.println(s1.length());
+
+        System.out.println("-----------------------------------------------------------");
+
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date parse = df.parse("2021-01-01");
+        SimpleDateFormat y = new SimpleDateFormat("yyyy");
+        String format = y.format(parse);
+
+
+        System.out.println("data==================================="+format);
+
+        BigDecimal bigDecimal = new BigDecimal("-99");
+
+        if (("-99").equals(String.valueOf(bigDecimal))) {
+            System.out.println("================");
+        } else {
+            System.out.println("----------------------------------");
+        }
         String a = new String("ab"); // a 为一个引用
         String b = new String("ab"); // b为另一个引用,对象的内容一样 String aa = "ab"; // 放在常量池中
         String aa = "ab"; // 放在常量池中

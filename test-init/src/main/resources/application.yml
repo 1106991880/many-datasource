@@ -32,6 +32,13 @@ spring:
     broker-url: tcp://localhost:61616
     user: admin
     password: admin
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: test
+      #username: admin
+      #password: 123456
 # Logger Config
 logging:
   level:
@@ -48,20 +55,31 @@ mybatis-plus:
       logic-delete-field: flag  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  type-enums-package: com.yang.enums # 枚举映射关系 数据库中存储1查询结果可以直接转化为男汉字
 
 
 ####扫描swagger注解
 swagger:
   base-package: com.yang
 
+oauth:
+  qq:
+    #你的appId
+    client_id: 123456789
+    #你的appKey
+    client_secret: 123456789
+    #你接收响应code码地址
+    redirect_uri: http://localhost:7000/authorize/qq
+    #腾讯获取code码地址
+    code_callback_uri: https://graph.qq.com/oauth2.0/authorize
+    #腾讯获取access_token地址
+    access_token_callback_uri: https://graph.qq.com/oauth2.0/token
+    #腾讯获取openid地址
+    openid_callback_uri: https://graph.qq.com/oauth2.0/me
+    #腾讯获取用户信息地址
+    user_info_callback_uri: https://graph.qq.com/user/get_user_info
 
-### QQ
-constants:
-  qqAppId: 101513767
-  qqAppSecret: b1d978cefcf405388893d8e686d307b0
-  qqRedirectUrl: http://127.0.0.1:8080/QQLogin
-
-### 微信
-  weCatAppId: wxa997b110821cbfd6
-  weCatAppSecret: a5cee82a40995afc5bc14d17058908c1
-  weCatRedirectUrl: http://wsryao.free.idcfengye.com
+common:
+  operation:
+    login:
+      expireTime: 30

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yang.entity.LearnUserInfo;
 import com.yang.mapper.LearnUserInfoMapper;
 import com.yang.service.MysqlService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @RestController
 @RequestMapping("/mysql")
+@Slf4j
 public class MysqlController {
 
     @Resource
@@ -45,12 +47,17 @@ public class MysqlController {
         System.out.println(("----- selectAll method test ------"));
         List<LearnUserInfo> userList = learnUserInfoMapper.selectList(new QueryWrapper<LearnUserInfo>().eq("name", "Jack"));
         userList.forEach(System.out::println);
+        List<LearnUserInfo> learnUserInfos = learnUserInfoMapper.selectList(new QueryWrapper<LearnUserInfo>()
+                .eq("name", "jack").select("name", "age"));
+        log.info("打印指定字段=======================================");
+        learnUserInfos.forEach(System.out::println);
         return userList.toString();
     }
 
     public static void main(String[] args) {
         ConcurrentHashMap<Object, Object> obj = new ConcurrentHashMap<>();
-        obj.put("aa","bb");
+        obj.put("aa", "bb");
+        obj.put("ddd","ddd");
     }
 
 }

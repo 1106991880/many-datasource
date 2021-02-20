@@ -57,7 +57,7 @@ public class ExtAop {
 
     // 自定义注解的具体实现 测试具体实现 环绕通知
     @Around("execution(* com.yang.service.*.*(..))")
-    public String around(ProceedingJoinPoint pjp) throws Throwable {
+    public Object around(ProceedingJoinPoint pjp) throws Throwable {
         // 获取代理对象的具体方法
         // 获取方法名称
         String name = pjp.getSignature().getName();
@@ -112,7 +112,7 @@ public class ExtAop {
             log.info("无注解后续操作");
         }
 
-        return proceed.toString();
+        return proceed;
 
     }
 

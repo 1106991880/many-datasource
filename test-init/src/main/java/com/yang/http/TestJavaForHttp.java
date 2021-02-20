@@ -6,8 +6,16 @@ import java.net.*;
 public class TestJavaForHttp {
 
     public static void main(String args[]) {
+        //String cityName = "北京";
+        //encode需要抛异常
+        //String cityNameStr = URLEncoder.encode(cityName, "UTF-8");
+        String appId = "101918631";
+        String redirectUrl = "http://127.0.0.1:9090/auth/user/login/callBackHandler";
+        String state = "1";
+        String webUrl = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" + appId + "&redirect_uri=" + redirectUrl + "";
+        System.out.println("webUrl==" + webUrl);
         //get请求
-        httpUrlConnectionGet();
+        httpUrlConnectionGet(webUrl);
         //post请求
         httpURLConnectionPOST();
 
@@ -16,27 +24,21 @@ public class TestJavaForHttp {
     /**
      * get请求
      */
-    public static void httpUrlConnectionGet() {
-        System.out.println("----------");
-        String cityName = "北京";
+    public static void httpUrlConnectionGet(String webUrl) {
         StringBuffer stringBuffer = new StringBuffer();
         try {
-            //encode需要抛异常
-            String cityNameStr = URLEncoder.encode(cityName, "UTF-8");
-            String cityWeatherUrl = "https://way.jd.com/he/freeweather?city=" + cityNameStr
-                    + "&appkey=yourkey";
             //需要抛异常
-            URL url = new URL(cityWeatherUrl);
+            URL url = new URL(webUrl);
             //openConnection需要抛异常
             URLConnection urlConnection = url.openConnection();
             InputStreamReader inputStreamReader = new InputStreamReader(urlConnection.getInputStream(), "utf-8");
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            // 存储响应的返回结果
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuffer.append(line);
             }
             bufferedReader.close();
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
@@ -44,7 +46,8 @@ public class TestJavaForHttp {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.printf(stringBuffer.toString());
+        System.out.println("========================================================");
+        //System.out.printf(stringBuffer.toString());
     }
 
     /**
@@ -75,10 +78,10 @@ public class TestJavaForHttp {
             httpURLConnection.connect();
             // 创建输入输出流,用于往连接里面输出携带的参数,(输出内容为?后面的内容)
             DataOutputStream dataOutputStream = new DataOutputStream(httpURLConnection.getOutputStream());
-            String city = "city="+URLEncoder.encode("北京","utf-8");
-            String appkey = "&appkey="+URLEncoder.encode("yourkey","utf-8");
+            String city = "city=" + URLEncoder.encode("北京", "utf-8");
+            String appkey = "&appkey=" + URLEncoder.encode("yourkey", "utf-8");
             // 格式 param = aaa=111&bbb=222&ccc=333&ddd=444
-            String params = city+appkey;
+            String params = city + appkey;
             // 将参数输出到连接
             dataOutputStream.writeBytes(params);
             // 输出完成后刷新并关闭流

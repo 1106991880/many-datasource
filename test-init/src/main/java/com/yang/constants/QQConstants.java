@@ -11,23 +11,32 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class QQConstants {
 
-	@Value("${constants.qqAppId}")
-	private String qqAppId;
+    // 你的appId
+    @Value("${oauth.qq.client_id}")
+    private String client_id;
 
-	@Value("${constants.qqAppSecret}")
-	private String qqAppSecret;
+    // 你的appKey
+    @Value("${oauth.qq.client_secret}")
+    private String client_secret;
 
-	@Value("${constants.qqRedirectUrl}")
-	private String qqRedirectUrl;
+    // 你接收响应code码地址
+    @Value("${oauth.qq.redirect_uri}")
+    private String redirect_uri;
 
-	@Value("${constants.weCatAppId}")
-	private String weCatAppId;
+    // 腾讯获取code码地址
+    @Value("${oauth.qq.code_callback_uri}")
+    private String code_callback_uri;
 
-	@Value("${constants.weCatAppSecret}")
-	private String weCatAppSecret;
+    // 腾讯获取access_token地址
+    @Value("${oauth.qq.access_token_callback_uri}")
+    private String access_token_callback_uri;
 
-	@Value("${constants.weCatRedirectUrl}")
-	private String weCatRedirectUrl;
+    // 腾讯获取openid地址
+    @Value("${oauth.qq.openid_callback_uri}")
+    private String openid_callback_uri;
 
-	//自行生成set get方法
+    // 腾讯获取用户信息地址
+    @Value("${oauth.qq.user_info_callback_uri}")
+    private String user_info_callback_uri;
+
 }

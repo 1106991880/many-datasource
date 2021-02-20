@@ -1,7 +1,6 @@
 package com.yang;
 
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jms.annotation.EnableJms;
@@ -24,11 +23,13 @@ import org.springframework.jms.annotation.EnableJms;
  * 8.集成阿里云短信服务sms
  * 9.发现一个很好用的热部署插件jrebel
  * 10.集成QQ登录
+ * 11.集成mongodb
+ * 12.集成支付宝支付
  */
 
 @SpringBootApplication
 @MapperScan("com.yang.mapper")//在 Spring Boot 启动类中添加 @MapperScan 注解，扫描 Mapper 文件夹
-//@EnableJms// activeMQ用到
+@EnableJms// activeMQ用到
 public class TestInitApplication {
 
     public static void main(String[] args) {
